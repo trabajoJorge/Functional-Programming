@@ -1,6 +1,5 @@
 import Data.Char
 
-
 agregar::Int -> Int -> Int
 agregar x y= if y>=0 || y<=9 then 
                     x*10+y
