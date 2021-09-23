@@ -48,9 +48,18 @@ toBin n =   if n `mod` 2 == 1 then toBin (n `div` 2) ++ [1]
 decimalAbinario:: Int -> Int
 decimalAbinario x= aDecimal (toBin x)
 
-
-
--- Ejercicio 8/
+binarioAdecimal :: Int -> Int
+binarioAdecimal 0 = 0
+binarioAdecimal i = 2 * binarioAdecimal (div i 10) + (mod i 10)
+-- Ejercicio 8
 ordenada :: Ord a => [a] -> Bool
 ordenada (x:xs)=    if (xs/=[])then (x<=head xs) && ordenada xs 
                     else True
+
+-- Ejercicio 9 ***
+wordsWhen :: (Char -> Bool) -> [Char] -> [[Char]]
+wordsWhen p s =  case dropWhile p s of
+                      "" -> []
+                      s' -> w : wordsWhen p s''
+                            where (w, s'') = break p s'
+
