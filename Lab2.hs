@@ -1,6 +1,7 @@
 import Data.Set ( fromList, toList )
-import Data.List
+import Data.List ( permutations )
 import Data.Char (digitToInt)
+import qualified Data.Char as Char
 
 -- Ejercicio 1
 quitaUno :: Eq a => a -> [a] -> [a] -- Eq para que la a sea de un tipo generico que se pueda igualar.
@@ -57,9 +58,23 @@ ordenada (x:xs)=    if (xs/=[])then (x<=head xs) && ordenada xs
                     else True
 
 -- Ejercicio 9 ***
-wordsWhen :: (Char -> Bool) -> [Char] -> [[Char]]
-wordsWhen p s =  case dropWhile p s of
-                      "" -> []
-                      s' -> w : wordsWhen p s''
-                            where (w, s'') = break p s'
+-- palabras   :: [Char] -> [[Char]]
+-- palabras s =  case dropWhile Char.isSpace s of
+--                      "" -> []
+--                    s' -> w : palabra s''
+--                          where (w, s'') = break Char.isSpace s'*/
 
+-- Ejercicio 10 
+posiciones :: Eq b => b -> [b] -> [Int]
+posiciones n a = fst (unzip (filter ((==n).snd) (zip[0..(length a)] a)))
+
+-- Ejercicio 11 ***
+
+
+-- Ejercicio 12
+permutaciones_DataList:: [a] -> [[a]]
+permutaciones_DataList a = permutations a
+
+permutaciones :: (Eq a) => [a] -> [[a]]
+permutaciones [] = [[]]
+permutaciones l = [a:x | a <- l, x <- (permutaciones $ filter (\x -> x /= a) l)] -- No entiendo 
