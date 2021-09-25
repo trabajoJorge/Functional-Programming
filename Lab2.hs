@@ -1,22 +1,18 @@
-import Data.Set ( fromList, toList )
-import Data.List ( permutations )
+import Data.List (permutations)
 import Data.Char (digitToInt)
-import qualified Data.Char as Char
+
 
 -- Ejercicio 1
 quitaUno :: Eq a => a -> [a] -> [a] -- Eq para que la a sea de un tipo generico que se pueda igualar.
 quitaUno _ [] = []
-quitaUno x (y:ys)   | x == y    = quitaUno x ys
-                    | otherwise = y : quitaUno x ys
+quitaUno x (y:ys) | x == y    = quitaUno x ys
+                  | otherwise = y : quitaUno x ys
 
 -- Ejercicio 2
-quitaRep1 ::  Ord a =>  [a] -> [a]
-quitaRep1 = toList . fromList
-
-quitaRep2 :: (Eq a) => [a] -> [a]
-quitaRep2 [] = []
-quitaRep2 [x] = [x]
-quitaRep2 (x:xs) = x : [ k | k <- quitaRep2 xs, k /=x ]
+quitaRep :: (Eq a) => [a] -> [a]
+quitaRep [] = []
+quitaRep [x] = [x]
+quitaRep (x:xs) = x : [ k | k <- quitaRep xs, k /=x ]
 
 -- Ejercicio 3
 dif::Eq a=>[a]->[a]->[a]
@@ -27,10 +23,9 @@ dif x (y:ys) = dif (quitaUno y x) ys
 perm::Eq a=>[a]->[a]->Bool
 perm x y = (dif x y == []) && (dif y x == [])
 
---Ejercicio 5 ***
--- sonpermede1 :: [[a]] -> [[a]]
--- sonpermede1 (x:xs)= 
-   -- filter perm x x:xs  
+--Ejercicio 5 * No entiendo lo de xss
+sonpermde :: Eq a => [[a]] -> [[a]]
+sonpermde (xs:xss) = filter (perm xs) (xs:xss)
 
 -- Ejercicio 6
 aDecimal :: Num int => [int] -> int
@@ -52,17 +47,18 @@ decimalAbinario x= aDecimal (toBin x)
 binarioAdecimal :: Int -> Int
 binarioAdecimal 0 = 0
 binarioAdecimal i = 2 * binarioAdecimal (div i 10) + (mod i 10)
+
 -- Ejercicio 8
 ordenada :: Ord a => [a] -> Bool
-ordenada (x:xs)=    if (xs/=[])then (x<=head xs) && ordenada xs 
-                    else True
+ordenada (x:xs)=  if (xs/=[])then (x<=head xs) && ordenada xs
+                  else True
 
--- Ejercicio 9 ***
--- palabras   :: [Char] -> [[Char]]
--- palabras s =  case dropWhile Char.isSpace s of
---                      "" -> []
---                    s' -> w : palabra s''
---                          where (w, s'') = break Char.isSpace s'*/
+-- Ejercicio 9
+palabra   :: [Char] -> [[Char]]
+palabra s =  case dropWhile (==' ') s of
+                     "" -> []
+                     sn -> w : palabra snn
+                        where (w, snn) = break (==' ') sn
 
 -- Ejercicio 10 
 posiciones :: Eq b => b -> [b] -> [Int]
@@ -75,6 +71,30 @@ posiciones n a = fst (unzip (filter ((==n).snd) (zip[0..(length a)] a)))
 permutaciones_DataList:: [a] -> [[a]]
 permutaciones_DataList a = permutations a
 
+-- Ejercicio 13 ***
+
+-- Ejercicio 15
+--10
+
+--11
+
+--12
 permutaciones :: (Eq a) => [a] -> [[a]]
 permutaciones [] = [[]]
-permutaciones l = [a:x | a <- l, x <- (permutaciones $ filter (\x -> x /= a) l)] -- No entiendo 
+permutaciones l = [a:x | a <- l, x <- (permutaciones(filter (\x -> x /= a) l))]
+
+-- Ejercicio 16 ***
+auxDiag :: [Char] -> [Char]
+auxDiag (x:"") =""
+auxDiag (x:xs)= [x] ++ "\n " ++ auxDiag " "++xs 
+
+diag :: [Char] -> IO()
+diag a= putStr(auxDiag a)
+
+-- Ejercicio 17
+repLong :: [Char] -> IO()
+repLong s= putStr(auxRep (length s) s)
+
+auxRep :: Int -> [Char] -> [Char]
+auxRep 0 _= ""
+auxRep x s = s ++ "\n" ++ auxRep (x-1) s

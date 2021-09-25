@@ -1,10 +1,10 @@
 import Data.Char
 
 agregar::Int -> Int -> Int
-agregar x y= if y>=0 || y<=9 then 
+agregar x y=    if y>=0 || y<=9 then 
                     x*10+y
-             else 
-                 error "El segundo parametro no es un digito"
+                else 
+                error "El segundo parametro no es un digito"
 
 
 e5_Sumcuad :: Int->Int->Int->Int
@@ -41,7 +41,7 @@ edad::(Int, Int, Int)->(Int, Int, Int)->(Int, Int, Int)
 edad (d1, m1, a1)  (d2, m2, a2) 
     | m1<=9 && d1<14 = (d2-d1, m2-m1, a2-a1)
     | otherwise  = (d2-d1, m2-m1, a2-a1-1)
-                  
+
 xorPersonal::Bool->Bool->Bool 
 xorPersonal x y 
     | x==y          =False 
