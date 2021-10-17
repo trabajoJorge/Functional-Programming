@@ -23,9 +23,9 @@ dif x (y:ys) = dif (quitaUno y x) ys
 perm::Eq a=>[a]->[a]->Bool
 perm x y = (dif x y == []) && (dif y x == [])
 
---Ejercicio 5 * No entiendo lo de xss
+--Ejercicio 5
 sonpermde :: Eq a => [[a]] -> [[a]]
-sonpermde (xs:xss) = filter (perm xs) (xs:xss)
+sonpermde (xs:xss) = filter (perm xs) (xs:xss) -- xss es la cola de una lista de listas
 
 -- Ejercicio 6
 aDecimal :: Num int => [int] -> int
@@ -64,32 +64,59 @@ palabra s =  case dropWhile (==' ') s of
 posiciones :: Eq b => b -> [b] -> [Int]
 posiciones n a = fst (unzip (filter ((==n).snd) (zip[0..(length a)] a)))
 
--- Ejercicio 11 ***
+-- Ejercicio 11 
+paratodo :: (a -> Bool) -> [a] -> Bool
+paratodo s l = length l == length (filter s l)
 
-
--- Ejercicio 12
-permutaciones_DataList:: [a] -> [[a]]
-permutaciones_DataList a = permutations a
-
--- Ejercicio 13 ***
-
--- Ejercicio 15
---10
-
---11
-
---12
+-- Ejercicio 12 
 permutaciones :: (Eq a) => [a] -> [[a]]
 permutaciones [] = [[]]
 permutaciones l = [a:x | a <- l, x <- (permutaciones(filter (\x -> x /= a) l))]
 
--- Ejercicio 16 ***
-auxDiag :: [Char] -> [Char]
-auxDiag (x:"") =""
-auxDiag (x:xs)= [x] ++ "\n " ++ auxDiag " "++xs 
+-- Ejercicio 13 
+sublista :: Eq a => [a] -> [a] -> Bool
+sublista [] l= True
+sublista s []= False
+sublista s l = if (head s == head l) then
+                  sublista(tail s) (tail l)
+               else
+                  sublista s (tail l)
 
-diag :: [Char] -> IO()
-diag a= putStr(auxDiag a)
+subSecuencia :: Eq a => [a] -> [a] -> Bool
+subSecuencia [] l= True
+subSecuencia s []= False
+subSecuencia s l = if (head s == head l) then
+                  subSecuencia(tail s) (tail l)
+               else
+                  False   
+
+-- Ejercicio 15
+--10 
+filtroTuplas e list = [(x,y) | (x,y) <- list, x == e] 
+posiciones1 :: Eq alpha=>alpha -> [alpha] -> [Int]
+posiciones1 e list = index
+                     where 
+                        (lista, index) = unzip (filtroTuplas e (zip list [0..]))
+
+--11
+paratodo1 :: Eq a => (a -> Bool) -> [a] -> Bool 
+paratodo1 s l = length [x | x<-l, s(x)] == length l
+
+--12
+permutaciones1 :: (Eq a) => [a] -> [[a]]
+permutaciones1 [] = [[]]
+permutaciones1 l = [a:x | a <- l, x <- (permutaciones(filter (\x -> x /= a) l))]
+
+-- Ejercicio 16 
+auxDiag::[Char]->[Char]->[Char]
+auxDiag e [] = []
+auxDiag e (x:xs) = ne ++ [x] ++ "\n" ++ (auxDiag ne xs)
+                     where ne = e ++ " "
+
+diag::[Char]->IO()
+diag [] = putStr("")
+diag p = putStr(auxDiag "" p)
+
 
 -- Ejercicio 17
 repLong :: [Char] -> IO()
