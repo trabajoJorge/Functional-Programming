@@ -40,18 +40,20 @@ calendario c  =  bloque c . map dibujomes . meses
 ---------------------------------------------------
 
 -- comprueba que las lineas de un dibujo tienen igual longitud,
--- debe dar un mensaje de error si el dibujo es vac�o ([]).
+-- debe dar un mensaje de error si el dibujo es vacío ([]).
 dibEsCorrecto :: Dibujo -> Bool
-dibEsCorrecto (d : ds)
-  | null ds = True
-  | length d == length (head ds) = dibEsCorrecto ds
-  | otherwise = False
+dibEsCorrecto (d:ds)
+  | null d                          = error("El dibujo no es correcto")
+  | null ds                         = True
+  | length d == length (head ds)    = dibEsCorrecto ds
+  | otherwise                       = False
 
 -- comprueba que los dibujos de la lista dada son correctos y
 -- ademas tienen todos las mismas dimensiones.
 listaDibCorrectos :: [Dibujo] -> Bool
 listaDibCorrectos (m : ms)
-  | null ms = True
+  | null ms = dibEsCorrecto(m)
+  | not(dibEsCorrecto(m)) = error("La lista de dibujos no es correcta")
   | (ancho m == ancho (head ms)) && (alto m == alto (head ms)) = (listaDibCorrectos ms) && (dibEsCorrecto m)
   | otherwise = False
 
