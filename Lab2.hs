@@ -1,4 +1,4 @@
-import Data.List (permutations)
+
 import Data.Char (digitToInt)
 
 
@@ -125,3 +125,7 @@ repLong s= putStr(auxRep (length s) s)
 auxRep :: Int -> [Char] -> [Char]
 auxRep 0 _= ""
 auxRep x s = s ++ "\n" ++ auxRep (x-1) s
+
+eliminarPrimeraLista :: [alpha] -> [alpha]-> [alpha]
+eliminarPrimeraLista _ []= []
+eliminarPrimeraLista _ y=  y

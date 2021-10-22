@@ -121,7 +121,7 @@ stringBlancos y= " "++stringBlancos(y-1)
 --               y luego apilar los resultados.
 bloque::Int->[Dibujo]->Dibujo
 bloque n d= map (++ "    ") b
-            where b= bloque2 n d
+        where b= bloque2 n d
 
 bloque2::Int->[Dibujo]->Dibujo
 bloque2 n d
@@ -204,12 +204,13 @@ nombresmeses = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio", "Agost
 
 -- fechas :: Int -> Int -> [Dibujo]
 -- fechas pd lm da una lista de 42 dibujos de 1*3 (alguno blanco)
---              con los dias de un mes cuyo primer dia de semana
+--              con los dias de un mes cuyo primer dia de   
 --              es pd y cuya longitud de mes es lm
 
 {- Ejemplo:
 fechas 3 30
-[["   "],["   "],["  1"],["  2"],["  3"],["  4"],["  5"],["  6"],["  7"],["  8"],["  9"],[" 10"],[" 11"],[" 12"],[" 13"],[" 14"],[" 15"],[" 16"],[" 17"],[" 18"],[" 19"],[" 20"],[" 21"],[" 22"],[" 23"],[" 24"],[" 25"],[" 26"],[" 27"],[" 28"],[" 29"],[" 30"],["   "],["   "],["   "],["   "],["   "],["   "],["   "],["   "],["   "],["   "]]
+[["   "],["   "],["  1"],["  2"],["  3"],["  4"],["  5"],
+["  6"],["  7"],["  8"],["  9"],[" 10"],[" 11"],[" 12"],[" 13"],[" 14"],[" 15"],[" 16"],[" 17"],[" 18"],[" 19"],[" 20"],[" 21"],[" 22"],[" 23"],[" 24"],[" 25"],[" 26"],[" 27"],[" 28"],[" 29"],[" 30"],["   "],["   "],["   "],["   "],["   "],["   "],["   "],["   "],["   "],["   "]]
 -}
 fechas :: Int -> Int -> [Dibujo]
 fechas x y= fechasRecursiva  x y 1 42
