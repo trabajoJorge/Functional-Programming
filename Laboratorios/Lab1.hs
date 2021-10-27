@@ -1,4 +1,4 @@
-import Data.Char
+import Data.Char ( isAlpha )
 
 agregar::Int -> Int -> Int
 agregar x y=    if y>=0 || y<=9 then 
