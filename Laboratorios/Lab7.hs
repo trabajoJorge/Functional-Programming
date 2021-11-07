@@ -78,7 +78,7 @@
                 if (n1>30 || n1<1) then error("El numero introduccido no esta dentro del rango")
                 else do 
                     adivinaConIntentos n1 1
-
+    
 
     adivinaConIntentos :: Int -> Int  -> IO ()
     adivinaConIntentos n1 i = do
