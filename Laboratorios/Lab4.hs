@@ -195,7 +195,7 @@ operar Div o1 o2      = div o1 o2
 instance Eq ExprArit where
     e1 == e2 = evaluar e1 == evaluar e2
 
---showOperador::Operador->Char
+
 showOperador :: Operador -> [Char]
 showOperador Mas    = " + "
 showOperador Menos  = " - "
