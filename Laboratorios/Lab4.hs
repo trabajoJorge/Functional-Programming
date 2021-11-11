@@ -19,7 +19,7 @@
     ghci> rara f g = g ( f g)
     ghci> :t rara
     rara :: ((t1 -> t2) -> t1) -> (t1 -> t2) -> t2
-    ghci>
+    ghci> 
     ghci> masRara f = f f
     
     !!SALTA ERRORR!!
