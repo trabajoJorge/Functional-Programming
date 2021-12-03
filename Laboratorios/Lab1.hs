@@ -84,3 +84,5 @@ miOR1 x False= x
 miAND1::Bool->Bool->Bool 
 miAND1 _ False= False
 miAND1 a True= a
+
+show [((countColl-(show s)!!9)]
