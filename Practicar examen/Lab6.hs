@@ -72,19 +72,33 @@ miembro x (Co c) = member x c
 union :: Conj a -> Conj a -> Conj a
 union (Co c1) (Co c2) = Co (c1 ++ c2)
 
+<<<<<<< HEAD
 inter :: Conj a -> Conj a -> Conj a
 inter (Co (c1:cs1)) (Co (c2:cs2))
+=======
+--inter :: Conj a -> Conj a -> Conj a
+--inter (Co c1) (Co c2) =
+>>>>>>> 30c390c93e1d5bbcd962a727c11a45e4049c8081
 
 dif :: Conj a -> Conj a -> Conj a
 dif (Co c1) (Co c2) = c1 // c2
 
+<<<<<<< HEAD
 card :: Conj a -> Int 
 card (Co c) = lenght c 
+=======
+--card :: Conj a -> Int 
+--card (Co c) = 
+>>>>>>> 30c390c93e1d5bbcd962a727c11a45e4049c8081
 
 subConj :: Conj a -> Conj a -> Bool
 subConj (Co c1) (Co c2) = isInfixOf c1 c2
 
+<<<<<<< HEAD
 hacerConj :: [a] -> Int
+=======
+hacerConj :: [a] -> Conj a
+>>>>>>> 30c390c93e1d5bbcd962a727c11a45e4049c8081
 hacerConj x = Co x
 
 mapConj :: (a -> b) -> Conj a -> Conj b 
@@ -123,11 +137,16 @@ miembro x (Co c) = member x c
 union :: Conj a -> Conj a -> Conj a
 union (Co c1) (Co c2) = Co (map head . group . sort (c1 ++ c2))
 
+<<<<<<< HEAD
 inter :: Conj a -> Conj a -> Conj a
 inter (Co c1) (Co c2) = Co (intersect c1 c2)
 
 intersect :: Ord a => [a] -> [a] -> [a]
 intersect xs ys = intersectSorted (sort xs) (sort ys)
+=======
+--inter :: Conj a -> Conj a -> Conj a
+--inter (Co c1) (Co c2) =
+>>>>>>> 30c390c93e1d5bbcd962a727c11a45e4049c8081
 
 dif :: Conj a -> Conj a -> Conj a
 dif (Co c1) (Co c2) = c1 // c2
