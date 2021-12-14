@@ -70,7 +70,7 @@ type ExpArit= Arbol Int String
 
 --(b) Escribe el término correspondiente a la expresión exp1 = (9 - (10+6)) + (3*5)
 arbol:: ExpArit
-arbol= Nodo (Nodo (Hoja 10) "+" (Nodo (Hoja 10) "+" (Hoja 6))) "+" (Nodo (Hoja 3) "*" (Hoja 5))
+arbol= Nodo (Nodo (Hoja 9) "+" (Nodo (Hoja 10) "+" (Hoja 6))) "+" (Nodo (Hoja 3) "*" (Hoja 5))
 
 
 --(c) Declara Arbol como instancia de la clase Show, de forma que exp1 se vea en pantalla así: 

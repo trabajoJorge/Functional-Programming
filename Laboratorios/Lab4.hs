@@ -136,7 +136,6 @@ printDirecciones:: [Direccion]->IO()
 printDirecciones []= putStr ""
 printDirecciones (x:xs)=  putStrLn(printDireccion x) >> printDirecciones(xs)
 
--- TODO: Falta este
 -- 8. Dado el siguiente tipo algebraico data Elemento = E String Int deriving Show que permite representar
 -- palabras con un contador asociado a cada una. 
 data Elemento = E String Int deriving Show
