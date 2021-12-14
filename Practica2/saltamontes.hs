@@ -20,7 +20,7 @@ type Altura = Int
 type Jardin = [Flor]
 
 type Camino = [Saltamonte]
-
+ 
 
 
 

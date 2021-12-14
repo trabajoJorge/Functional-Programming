@@ -1,9 +1,3 @@
-------------------------------------------------------------------
---  PRACTICA: CALENDARIO           --               PF  2020-2021
-
---  Nombres:  Jorge Iglesias 
---            Asier Cruz 
-------------------------------------------------------------------
 
 -- Llamada principal es:  printCalendario c n
 -- donde c = columnas (3 o 4) y

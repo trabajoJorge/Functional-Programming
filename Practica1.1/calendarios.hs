@@ -20,7 +20,7 @@ type Linea = [Char] -- cada linea es una lista de caracteres
 type Year = Int
 
 type Columna = Int -- es 3 o 4
-
+ 
 -- Para imprimir un dibujo en pantalla:
 printDibujo :: Dibujo -> IO ()
 printDibujo dib = do
