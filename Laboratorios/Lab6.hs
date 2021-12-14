@@ -45,108 +45,108 @@ primero :: CatLista a -> a
 primero (Unit a)    = a
 primero (Conc a b)  = primero a
 primero _ = error("La lista es incorrecta")
-
+{-
 -- 3 --------------------------------------------------------------
 module Conjunto1
 where
-import Data.List
+    import Data.List
 
-data Conj a = Co [a]
+    data Conj a = Co [a]
 
-instance (Eq a) => Eq (Conj a) where
-(Co c1) == (Co c2) = (c1 == c2)
+    instance (Eq a) => Eq (Conj a) where
+    (Co c1) == (Co c2) = (c1 == c2)
 
-instance (Show a) => Show (Conj a) where
-show (Co c) = "{" ++ (tail s) ++ "}" 
-    where s = init (show c)
+    instance (Show a) => Show (Conj a) where
+    show (Co c) = "{" ++ (tail s) ++ "}" 
+        where s = init (show c)
 
-vacio :: Conj a
-vacio = Co []
+    vacio :: Conj a
+    vacio = Co []
 
-simple :: a -> Conj a
-simple x = Conj [x]
+    simple :: a -> Conj a
+    simple x = Conj [x]
 
-miembro :: a -> Conj a -> Bool
-miembro x (Co c) = member x c
+    miembro :: a -> Conj a -> Bool
+    miembro x (Co c) = member x c
 
-union :: Conj a -> Conj a -> Conj a
-union (Co c1) (Co c2) = Co (c1 ++ c2)
+    union :: Conj a -> Conj a -> Conj a
+    union (Co c1) (Co c2) = Co (c1 ++ c2)
 
-inter :: Conj a -> Conj a -> Conj a
-inter (Co c1) (Co c2) = Co (intersect c1 c2)
+    inter :: Conj a -> Conj a -> Conj a
+    inter (Co c1) (Co c2) = Co (intersect c1 c2)
 
-intersect :: Ord a => [a] -> [a] -> [a]
-intersect xs ys = intersectSorted (sort xs) (sort ys)
+    intersect :: Ord a => [a] -> [a] -> [a]
+    intersect xs ys = intersectSorted (sort xs) (sort ys)
 
-dif :: Conj a -> Conj a -> Conj a
-dif (Co c1) (Co c2) = c1 // c2
+    dif :: Conj a -> Conj a -> Conj a
+    dif (Co c1) (Co c2) = c1 // c2
 
-card :: Conj a -> Int 
-card (Co c) = lenght c 
+    card :: Conj a -> Int 
+    card (Co c) = lenght c 
 
-subConj :: Conj a -> Conj a -> Bool
-subConj (Co c1) (Co c2) = isInfixOf c1 c2
+    subConj :: Conj a -> Conj a -> Bool
+    subConj (Co c1) (Co c2) = isInfixOf c1 c2
 
-hacerConj :: [a] -> Int
-hacerConj :: [a] -> Conj a
-hacerConj x = Co x
+    hacerConj :: [a] -> Int
+    hacerConj :: [a] -> Conj a
+    hacerConj x = Co x
 
-mapConj :: (a -> b) -> Conj a -> Conj b 
-mapConj f (Co c1) (Co c2) = map f c1 c2
+    mapConj :: (a -> b) -> Conj a -> Conj b 
+    mapConj f (Co c1) (Co c2) = map f c1 c2
 
-filterConj :: (a->Bool) -> Conj a -> Conj a 
-filterConj f (Co c1) (Co c2) = filter f c1 c2
+    filterConj :: (a->Bool) -> Conj a -> Conj a 
+    filterConj f (Co c1) (Co c2) = filter f c1 c2
 
-foldConj :: (a -> b -> b) -> b -> Conj a -> b
-foldConj f x (Co c) = fold f x c
+    foldConj :: (a -> b -> b) -> b -> Conj a -> b
+    foldConj f x (Co c) = fold f x c
 
 
 
 module Conjunto2
 where
-import Data.List
+    import Data.List
 
-data Conj a = Co [a]
+    data Conj a = Co [a]
 
-instance (Eq a) => Eq (Conj a) where
-(Co c1) == (Co c2) = (c1 == c2)
+    instance (Eq a) => Eq (Conj a) where
+    (Co c1) == (Co c2) = (c1 == c2)
 
-instance (Show a) => Show (Conj a) where
-show (Co c) = "{" ++ (tail s) ++ "}" 
-    where s = init (show c)
+    instance (Show a) => Show (Conj a) where
+    show (Co c) = "{" ++ (tail s) ++ "}" 
+        where s = init (show c)
 
-vacio :: Conj a
-vacio = Co []
+    vacio :: Conj a
+    vacio = Co []
 
-simple :: a -> Conj a
-simple x = Conj [x]
+    simple :: a -> Conj a
+    simple x = Conj [x]
 
-miembro :: a -> Conj a -> Bool
-miembro x (Co c) = member x c
+    miembro :: a -> Conj a -> Bool
+    miembro x (Co c) = member x c
 
-union :: Conj a -> Conj a -> Conj a
-union (Co c1) (Co c2) = Co (map head . group . sort (c1 ++ c2))
+    union :: Conj a -> Conj a -> Conj a
+    union (Co c1) (Co c2) = Co (map head . group . sort (c1 ++ c2))
 
-inter :: Conj a -> Conj a -> Conj a
-inter (Co c1) (Co c2) = Co (intersect c1 c2)
+    inter :: Conj a -> Conj a -> Conj a
+    inter (Co c1) (Co c2) = Co (intersect c1 c2)
 
-intersect :: Ord a => [a] -> [a] -> [a]
-intersect xs ys = intersectSorted (sort xs) (sort ys)
+    intersect :: Ord a => [a] -> [a] -> [a]
+    intersect xs ys = intersectSorted (sort xs) (sort ys)
 
-dif :: Conj a -> Conj a -> Conj a
-dif (Co c1) (Co c2) = c1 // c2
+    dif :: Conj a -> Conj a -> Conj a
+    dif (Co c1) (Co c2) = c1 // c2
 
-subConj :: Conj a -> Conj a -> Bool
-subConj (Co c1) (Co c2) = isInfixOf c1 c2
+    subConj :: Conj a -> Conj a -> Bool
+    subConj (Co c1) (Co c2) = isInfixOf c1 c2
 
-hacerConj :: [a] -> Conj a
-hacerConj x = Co (map head . group . sort x)
+    hacerConj :: [a] -> Conj a
+    hacerConj x = Co (map head . group . sort x)
 
-mapConj :: (a -> b) -> Conj a -> Conj b 
-mapConj f (Co c) = map f c
+    mapConj :: (a -> b) -> Conj a -> Conj b 
+    mapConj f (Co c) = map f c
 
-filterConj :: (a->Bool) -> Conj a -> Conj a 
-filterConj f (Co c) = filter f c
+    filterConj :: (a->Bool) -> Conj a -> Conj a 
+    filterConj f (Co c) = filter f c
 
-foldConj :: (a -> b -> b) -> b -> Conj a -> b
-foldConj f x (Co c) = fold f x c
+    foldConj :: (a -> b -> b) -> b -> Conj a -> b
+    foldConj f x (Co c) = fold f x c-}
